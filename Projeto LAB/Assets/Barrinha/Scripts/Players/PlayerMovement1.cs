@@ -13,6 +13,7 @@ public class PlayerMovement1 : MonoBehaviour
     //Character Controller
     private Rigidbody2D controller;
     Vector2 playerVelocity;
+    
 
     //GroundCheck
     [SerializeField] Transform groundCheck;
