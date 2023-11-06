@@ -40,10 +40,11 @@ public class PlayerMovement2 : MonoBehaviour
         moveDirection.y = input.y;
         //controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, 0);        
         playerVelocity.y += gravity * Time.deltaTime;
-        if (IsGrounded() && playerVelocity.y < 0)
-            playerVelocity.y = -2f;
-        controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
-
+        //if (IsGrounded() && playerVelocity.y < 0)
+        //    playerVelocity.y = -2f;
+        if (IsGrounded())
+            controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
+        controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, controller.velocity.y);
     }
     public void Jump()
     {

@@ -273,7 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 200
   gravity: -98
-  jumpHeight: 100
+  jumpHeight: 250
   groundCheck: {fileID: 2036118011}
   groundLayer:
     serializedVersion: 2
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 200
   gravity: -98
-  jumpHeight: 100
+  jumpHeight: 250
   groundCheck: {fileID: 3480003}
   groundLayer:
     serializedVersion: 2
@@ -690,8 +690,8 @@ Transform:
   m_GameObject: {fileID: 260352683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.16, y: 2.67, z: 0}
-  m_LocalScale: {x: 2.5661874, y: 0.5875, z: 1}
+  m_LocalPosition: {x: 1.16, y: 0.39, z: 0}
+  m_LocalScale: {x: 2.5661874, y: 0.38187498, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1380,7 +1380,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.91, y: -2.09, z: 0}
-  m_LocalScale: {x: 2.5661874, y: 0.5875, z: 1}
+  m_LocalScale: {x: 2.5661874, y: 0.35984373, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
