@@ -2,59 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.Windows;
 
 public class PlayerMovement1 : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float gravity = -9.8f;
-    [SerializeField] float jumpHeight;
-    bool isGrounded;
+    [SerializeField] float jumpHeight;    
 
     //Character Controller
     private Rigidbody2D controller;
     Vector2 playerVelocity;
-    
+    Vector2 moveDirection;
 
     //GroundCheck
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
-   
+
+    //Bool 
+    bool isGrounded;
+    public bool isRapel;
 
     void Start()
     {
         controller = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsGrounded()
     {
-       // isGrounded = controller.isGrounded;
-    }
-
-    private bool IsGrounded()
-    {    
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 
     public void Move(Vector2 input)
     {
-        Vector2 moveDirection = Vector3.zero;
-        moveDirection.x = input.x;
-        moveDirection.y = input.y;
-        //controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, 0);        
-        playerVelocity.y += gravity * Time.deltaTime;
-        //if (IsGrounded() && playerVelocity.y < 0)
-        //    playerVelocity.y = -2f;
-        if (IsGrounded())
-            controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
-        controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, controller.velocity.y);
-
+        if(!isRapel)
+        {
+            moveDirection = Vector3.zero;
+            moveDirection.x = input.x;
+            moveDirection.y = input.y;
+            //controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, 0);        
+            playerVelocity.y += gravity * Time.deltaTime;
+            //if (IsGrounded() && playerVelocity.y < 0)
+            //    playerVelocity.y = -2f;
+            if (IsGrounded())
+                controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
+            controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, controller.velocity.y);
+        }   
     }
     public void Jump()
     {
         if (IsGrounded())
         {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
+            if(!isRapel)
+                playerVelocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
+        }
+    }
+
+    public void Rapel(Vector2 input)
+    {
+        if (isRapel)
+        { 
+            //moveDirection = Vector3.zero;
+            moveDirection.y = input.y;
+            controller.velocity = new Vector2(controller.velocity.x, moveDirection.y * speed/2 * Time.deltaTime);
         }
     }
 

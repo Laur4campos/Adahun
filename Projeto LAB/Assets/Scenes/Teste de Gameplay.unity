@@ -278,6 +278,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  isRapel: 0
 --- !u!58 &81539229
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -470,6 +471,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  isRapel: 0
 --- !u!114 &91008818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,6 +1397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213176341}
   - component: {fileID: 1213176340}
+  - component: {fileID: 1213176342}
   m_Layer: 0
   m_Name: Double Control
   m_TagString: Untagged
@@ -1433,6 +1436,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213176342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213176339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f48e4fd2b68c9459e9171a8314162b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pl1: {fileID: 91008816}
+  pl2: {fileID: 81539228}
 --- !u!1 &2036118010
 GameObject:
   m_ObjectHideFlags: 0
