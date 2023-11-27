@@ -6,14 +6,16 @@ using UnityEngine.Windows;
 
 public class PlayerMovement1 : MonoBehaviour
 {
+    [Header("Player Movement")]
     [SerializeField] float speed;
     [SerializeField] float gravity = -9.8f;
-    [SerializeField] float jumpHeight;    
+    [SerializeField] float jumpHeight;
 
     //Character Controller
+    [Header("Character Controller")]
     private Rigidbody2D controller;
-    Vector2 playerVelocity;
-    Vector2 moveDirection;
+    [SerializeField] Vector2 playerVelocity;
+    [SerializeField] Vector2 moveDirection;
 
     //GroundCheck
     [SerializeField] Transform groundCheck;
@@ -42,8 +44,7 @@ public class PlayerMovement1 : MonoBehaviour
             moveDirection.y = input.y;
             //controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, 0);        
             playerVelocity.y += gravity * Time.deltaTime;
-            //if (IsGrounded() && playerVelocity.y < 0)
-            //    playerVelocity.y = -2f;
+            
             if (IsGrounded())
                 controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
             controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, controller.velocity.y);
@@ -61,11 +62,16 @@ public class PlayerMovement1 : MonoBehaviour
     public void Rapel(Vector2 input)
     {
         if (isRapel)
-        { 
-            //moveDirection = Vector3.zero;
+        {
+            playerVelocity.y += gravity * Time.deltaTime;
             moveDirection.y = input.y;
             controller.velocity = new Vector2(controller.velocity.x, moveDirection.y * speed/2 * Time.deltaTime);
         }
+    }
+
+    public Vector2 GetPosition()
+    {
+        return this.transform.position;
     }
 
 }

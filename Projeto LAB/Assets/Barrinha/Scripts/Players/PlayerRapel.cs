@@ -22,21 +22,23 @@ public class PlayerRapel : MonoBehaviour
             Debug.Log("In the Ground");
         }
         //pl1 Rapel
-        if (!pl1.IsGrounded() && pl2.IsGrounded()) 
+        if (pl1.GetPosition().y / 2 < pl2.GetPosition().y) 
         {
             pl1.isRapel = true;
             pl2.isRapel = false;
-            Debug.Log("Rapel");
+            Debug.Log("Rapel PL1: " + pl1.GetPosition().y +
+                "Rapel PL2: " + pl2.GetPosition().y);
         }
         //pl2 Rapel
-        if (pl1.IsGrounded() && !pl2.IsGrounded())
+        if (pl2.GetPosition().y / 2 < pl1.GetPosition().y)
         {
             pl1.isRapel = false;
             pl2.isRapel = true;
-            Debug.Log("Rapel");
+            Debug.Log("Rapel PL2: " + pl2.GetPosition().y + 
+                "Rapel PL1: " + pl1.GetPosition().y);
         }
         //Falling
-        if (!pl1.IsGrounded() && !pl2.IsGrounded()!)
+        if (!pl1.IsGrounded() && !pl2.IsGrounded())
         {
             pl1.isRapel = false;
             pl2.isRapel = false;
