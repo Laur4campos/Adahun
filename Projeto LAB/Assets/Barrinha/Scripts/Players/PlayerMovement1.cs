@@ -65,7 +65,7 @@ public class PlayerMovement1 : MonoBehaviour
         {
             playerVelocity.y += gravity * Time.deltaTime;
             moveDirection.y = input.y;
-            controller.velocity = new Vector2(controller.velocity.x, moveDirection.y * speed/2 * Time.deltaTime);
+            controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
         }
     }
 

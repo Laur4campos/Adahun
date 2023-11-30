@@ -172,7 +172,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "WS",
+                    "name": "ADWS",
                     "id": "96f505c9-3e78-4292-ac42-51ff3824f0d8",
                     "path": "2DVector",
                     "interactions": "",
@@ -197,6 +197,28 @@
                     "name": "up",
                     "id": "4ec581b2-8a3a-49c6-8c0a-d3ac08548b9e",
                     "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC controller",
+                    "action": "Rapel1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "de6182ce-9da2-4db8-ac8b-a775dc4104cb",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC controller",
+                    "action": "Rapel1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "2034bf44-f0fd-4df1-a8ac-aea396b3cef4",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC controller",
@@ -230,6 +252,28 @@
                     "name": "up",
                     "id": "180f09c8-d58a-454a-9eec-bb5fba130fc1",
                     "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC controller",
+                    "action": "Rapel2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "335d6bc4-4fa3-48f0-85fa-240612ecf4bb",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC controller",
+                    "action": "Rapel2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6af558c0-cf2b-4b4f-aa7d-c167518ac272",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC controller",

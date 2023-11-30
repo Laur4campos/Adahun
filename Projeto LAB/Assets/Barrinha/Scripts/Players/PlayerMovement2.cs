@@ -25,6 +25,11 @@ public class PlayerMovement2 : MonoBehaviour
     bool isGrounded;
     public bool isRapel;
 
+    //Rotation
+    [SerializeField] Transform rotationCenter;
+    [SerializeField] float rotationRadius = 2f, angularSpeed = 2f;
+    [SerializeField] float posX, posY, angle = 0f;
+
     void Start()
     {
         controller = GetComponent<Rigidbody2D>();
@@ -65,9 +70,25 @@ public class PlayerMovement2 : MonoBehaviour
         {
             playerVelocity.y += gravity * Time.deltaTime;
             moveDirection.y = input.y;
-            controller.MoveRotation;
-            controller.velocity = new Vector2(controller.velocity.x, moveDirection.y * speed / 2 * Time.deltaTime);
+            moveDirection.x = input.x;
+            controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
         }
+    }
+
+    void RotationController(Vector2 input)
+    {
+        moveDirection.y = input.y;
+        moveDirection.x = input.x;
+        controller.AddForce(new Vector2(5,10));
+        
+
+        //posX = rotationCenter.position.x + Mathf.Cos(angle) * rotationRadius/2;
+        //posY = rotationCenter.position.y + Mathf.Sin(angle) * rotationRadius;
+        //controller.position = new Vector2(posX, posY);
+        //angle += Time.deltaTime * angularSpeed;
+
+        //if (angle >= 360f)
+        //    angle = 0;
     }
 
     public Vector2 GetPosition()
