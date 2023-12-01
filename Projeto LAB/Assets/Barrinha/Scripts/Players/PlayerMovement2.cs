@@ -68,10 +68,9 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (isRapel)
         {
-            playerVelocity.y += gravity * Time.deltaTime;
-            moveDirection.y = input.y;
+            //playerVelocity.y += gravity * Time.deltaTime;
             moveDirection.x = input.x;
-            controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
+            controller.velocity = new Vector2(moveDirection.x * speed / 2 * Time.deltaTime, controller.velocity.y);
         }
     }
 
