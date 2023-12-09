@@ -17,17 +17,17 @@ public class InputManager : MonoBehaviour
         playerActions = playerInput.PlayerMaps;        
              
         //Evento Pulo
-        playerActions.Jump1.performed += ctx => player1.Jump();
-        playerActions.Jump2.performed += ctx => player2.Jump();       
+        //playerActions.Jump1.performed += ctx => player1.Jump();
+        //playerActions.Jump2.performed += ctx => player2.Jump();       
     }
     private void FixedUpdate()
     {
         //movimentação
-        player1.Move(playerActions.Movement1.ReadValue<Vector2>());
-        player2.Move(playerActions.Movement2.ReadValue<Vector2>());
+        //player1.Move(playerActions.Movement1.ReadValue<Vector2>());
+        //player2.Move(playerActions.Movement2.ReadValue<Vector2>());
         //rapel
-        player1.Rapel(playerActions.Rapel1.ReadValue<Vector2>());
-        player2.Rapel(playerActions.Rapel2.ReadValue<Vector2>());
+        //player1.Rapel(playerActions.Rapel1.ReadValue<Vector2>());
+        //player2.Rapel(playerActions.Rapel2.ReadValue<Vector2>());
     }
 
     private void LateUpdate()

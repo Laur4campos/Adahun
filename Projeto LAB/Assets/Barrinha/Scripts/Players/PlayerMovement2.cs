@@ -25,10 +25,7 @@ public class PlayerMovement2 : MonoBehaviour
     bool isGrounded;
     public bool isRapel;
 
-    //Rotation
-    [SerializeField] Transform rotationCenter;
-    [SerializeField] float rotationRadius = 2f, angularSpeed = 2f;
-    [SerializeField] float posX, posY, angle = 0f;
+   
 
     void Start()
     {
