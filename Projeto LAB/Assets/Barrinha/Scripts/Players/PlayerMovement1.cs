@@ -8,18 +8,22 @@ using static UnityEngine.InputSystem.DefaultInputActions;
 
 public class PlayerMovement1 : MonoBehaviour
 {
-    [Header("Player Movement")]
-    [SerializeField] float speed, rapelSpeed;
+    [Header("Velocidade do Jogador")]
+    [SerializeField] float speed;
+    [Header("Velocidade do balanço")]
+    [SerializeField] float rapelSpeed;
+    [Header("Gravidade do Jogador")]
     [SerializeField] float gravity = -98f;
+    [Header("Altura do Pulo")]
     [SerializeField] float jumpHeight;
 
     //Character Controller    
-    private Rigidbody2D controller;
-    [Header("Character Controller")]
-    [SerializeField] Vector2 playerVelocity;
-    [SerializeField] Vector2 moveDirection;
+    private Rigidbody2D controller;    
+    Vector2 playerVelocity;
+    Vector2 moveDirection;
 
     //GroundCheck
+    [Header("Checks do chão")]
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
 
@@ -29,32 +33,33 @@ public class PlayerMovement1 : MonoBehaviour
 
     //Enum Players
     enum playerName { Jogador1, Jogador2 };
-    [SerializeField] playerName i;
+    [Header("Qual jogador se Move")]
+    [SerializeField] playerName whichPlayerMoves;
 
     //PlayerActions
     PlayerActions playerInput;
     
-
+    //Game 
     [Header("GameManager")]
     [SerializeField] GM gm;
 
     void Awake()
     {
         playerInput = new PlayerActions();
-        switch (i)
+        switch (whichPlayerMoves)
         {
             case playerName.Jogador1:
-                playerInput.PlayerMaps.Jump1.performed += ctx => Jump();
+                playerInput.PlayerMaps.Jump1.performed += ctx => Jump();                
                 break;
             
             case playerName.Jogador2:
                 if (gm.mode == GM.playerMode.MULTI)
                 {
-                    playerInput.PlayerMaps.Jump2.performed += ctx => Jump();
+                    playerInput.PlayerMaps.Jump2.performed += ctx => Jump();                    
                 }
                 else
                 {
-                    playerInput.PlayerMaps.Jump1.performed += ctx => Jump();
+                    playerInput.PlayerMaps.Jump1.performed += ctx => Jump();                    
                 }
                 break;
 
@@ -74,7 +79,7 @@ public class PlayerMovement1 : MonoBehaviour
 
     public void FixedUpdate()
     {
-        switch (i)
+        switch (whichPlayerMoves)
         {
             case playerName.Jogador1:
                 //playeraction                    
@@ -104,6 +109,7 @@ public class PlayerMovement1 : MonoBehaviour
 
     void MoveController(Vector2 input)
     {
+        controller.mass = 1;
         if (!isRapel)
         {
             moveDirection = Vector3.zero;
@@ -113,7 +119,14 @@ public class PlayerMovement1 : MonoBehaviour
             playerVelocity.y += gravity * Time.deltaTime;
 
             if (IsGrounded())
+            { 
                 controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, playerVelocity.y * Time.deltaTime);
+                //Crouch
+                if (input.y < 0)                
+                    controller.mass = 100;                
+                else
+                    controller.mass = 1;
+            }
             controller.velocity = new Vector2(moveDirection.x * speed * Time.deltaTime, controller.velocity.y);
         }
     }
@@ -122,14 +135,17 @@ public class PlayerMovement1 : MonoBehaviour
         if (IsGrounded())
         {
             if (!isRapel)
+            { 
+                controller.mass = 1;
                 playerVelocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
+            }
         }
     }
-
     public void Rapel(Vector2 input)
-    {
+    {        
         if (isRapel)
         {
+            controller.mass = 1;
             //playerVelocity.y += gravity * Time.deltaTime;
             moveDirection.x = input.x;
             controller.velocity = new Vector2(moveDirection.x * rapelSpeed / 2 * Time.deltaTime, controller.velocity.y);
@@ -152,3 +168,4 @@ public class PlayerMovement1 : MonoBehaviour
 
 
 }
+//////////////////////
